@@ -11,7 +11,7 @@ class Game(models.Model):
         ('completed', 'Completed'),
     ]
     Status = models.CharField(max_length=10, choices=STATUS_CHOICES,default='waiting')
-    Maxplayers = models.IntegerField(validators=[MaxValueValidator(10)])
+    Maxplayers = models.IntegerField(validators=[MaxValueValidator(10)],default=10)
     StartCash = models.IntegerField(default=3000)
     Smallblind = models.IntegerField(default=10)
     Raiseblind = models.IntegerField(default=8)
@@ -19,7 +19,18 @@ class Game(models.Model):
     delay = models.IntegerField(default=5)
 
 class Player(models.Model):
-    User = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    game = models.ManyToManyField(Game, related_name='players')
+    cash = models.IntegerField(default=3000)
+
+    def __str__(self):
+        return self.user.username
+    
+
+
+    
+
+
 
 
 
