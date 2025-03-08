@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "Game",
     # 3rd party
     "rest_framework",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}

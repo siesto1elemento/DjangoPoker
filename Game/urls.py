@@ -1,5 +1,6 @@
-from django.urls import path,include
+from django.urls import path, include
 from . import views
+
 urlpatterns = [
-    path("",views.CreateGameView.as_view()),
+    path("", views.CreateGameView.as_view()),
 ]

@@ -14,4 +14,3 @@ def construct_deck():
 def shuffle_deck(deck: list):
     random.shuffle(deck)
     return deck
-
